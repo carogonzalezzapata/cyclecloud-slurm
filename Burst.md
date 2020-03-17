@@ -38,18 +38,25 @@ tar xvzf /tmp/bootstrap_slurm.tgz
 4) Install the cyclecloud-api Python package using pip:
     
 ```bash
-    sudo pip install cyclecloud-api-7.9.2.tar.gz
+sudo pip install cyclecloud-api-7.9.2.tar.gz
 ```
 
 5) Copy job_submit_cyclecloud.so  to /usr/lib64/slurm/
 
+```bash
     sudo cp /opt/cycle/jetpack/system/bootstrap/job_submit_cyclecloud.so /usr/lib64/slurm/
-6) mkdir /opt/cycle/jetpack/config
+```
 
+6) 
+```bash
+mkdir /opt/cycle/jetpack/config
+```
 7) Initialize the connection to CycleCloud with the cyclecloud_slurm.sh script. Note: You may want to use a special API user since this password will be stored on the cluster:
 
-    cd /opt/cycle/jetpack/system/bootstrap/slurm
+```bash
+cd /opt/cycle/jetpack/system/bootstrap/slurm
     ./cyclecloud_slurm.sh initialize --cluster-name slurmmpi --username myuser --password mypass --url https://cyclecloudiq4tz4.eastus.cloudapp.azure.com 
+```
 
 8) Create /etc/slurm/{topology,cyclecloud,cgroups}.conf if they don't already exist (and link to /sched)
 
